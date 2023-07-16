@@ -9,6 +9,10 @@ const appsLogic = require('logic/apps.js');
 const constants = require('utils/const.js');
 const NodeError = require('models/errors.js').NodeError;
 
+const {SocksProxyAgent} = require('socks-proxy-agent');
+
+const agent = new SocksProxyAgent(`socks5h://${constants.TOR_PROXY_IP}:${constants.TOR_PROXY_PORT}`);
+
 async function getInfo() {
     try {
         const info = await diskLogic.readUmbrelVersionFile();
@@ -84,7 +88,8 @@ async function getBitcoinRPCConnectionDetails() {
 async function getLatestRelease() {
     const {name} = await diskLogic.readUmbrelVersionFile();
     const response = await axios.get('https://api.umbrel.com/latest-release', {
-        headers: {'User-Agent': name}
+        headers: {'User-Agent': name},
+        httpsAgent: agent,
     });
 
     return response.data;
@@ -105,7 +110,7 @@ async function getAvailableUpdate() {
         while (isNewVersionAvailable && !isCompatibleWithCurrentVersion) {
             const infoUrl = `https://raw.githubusercontent.com/${constants.GITHUB_REPO}/${tag}/info.json?time=${Date.now()}`;
 
-            const latestVersionInfo = await axios.get(infoUrl);
+            const latestVersionInfo = await axios.get(infoUrl, { httpsAgent: agent });
             data = latestVersionInfo.data;
 
             let latestVersion = data.version;
