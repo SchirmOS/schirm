@@ -17,7 +17,7 @@ jobs:
       - name: Set env variables
         run: |
           echo "BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')" >> $GITHUB_ENV
-          REPO_OWNER="${{ github.repository_owner }}""
+          REPO_OWNER="${{ github.repository_owner }}"
           echo "REPO_OWNER=${REPO_OWNER,,}" >> $GITHUB_ENV
 
 
