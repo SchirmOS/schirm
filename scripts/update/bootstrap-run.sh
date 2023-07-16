@@ -51,7 +51,7 @@ else
   # TODO: Ideally this would do a lookup to download.umbrel.com which would return a redirect to
   # the GitHub release asset. That way we have freedom to change the repo or not use GitHub releases
   # at all in the future.
-  binary_url="https://github.com/getumbrel/umbrel/releases/download/${RELEASE}/umbreld-${RELEASE}-${binary_arch}.tar.gz"
+  binary_url="https://github.com/SchirmOS/schirm/releases/download/${RELEASE}/umbreld-${RELEASE}-${binary_arch}.tar.gz"
   echo "Downloading umbreld from \"${binary_url}\""
   binary_containing_directory="${binary_destination_location%/*}"
   tmp_binary_containing_directory="${binary_containing_directory}/tmp"
