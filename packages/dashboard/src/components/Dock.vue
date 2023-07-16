@@ -21,6 +21,10 @@
             <dock-app id="app-store" name="App Store" :position="position" :notifications="appStoreNotifications" :active="this.$route.name === 'app-store' || this.$route.name === 'app-store-app'" @click="toggleDock(350)" />
           </router-link>
 
+          <router-link :to="{name: 'nirvati'}">
+            <dock-app id="nirvati" name="Nirvati" :position="position" :notifications="settingsNotifications" :active="this.$route.name === 'nirvati'" @click="toggleDock(350)" />
+          </router-link>
+
           <router-link :to="{name: 'settings'}">
             <dock-app id="settings" name="Settings" :position="position" :notifications="settingsNotifications" :active="this.$route.name === 'settings'" @click="toggleDock(350)" />
           </router-link>

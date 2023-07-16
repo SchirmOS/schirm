@@ -13,6 +13,7 @@ import AppStore from "../views/AppStore/AppStore.vue";
 import AppStoreApp from "../views/AppStore/AppStoreApp.vue";
 import CommunityAppStore from "../views/AppStore/CommunityAppStore.vue";
 import CommunityAppStoreApp from "../views/AppStore/CommunityAppStoreApp.vue";
+import Nirvati from "../views/Nirvati/Nirvati.vue";
 import Settings from "../views/Settings/Settings.vue";
 
 
@@ -108,6 +109,21 @@ const routes = [
                 path: "",
                 name: "settings",
                 component: Settings,
+                meta: {
+                  wallpaperClass: 'wallpaper-content-open wallpaper-zoom-in'
+                } 
+              }
+            ]
+          },
+          {
+            path: "/nirvati",
+            component: ContentLayout,
+            meta: { scrollTop: true },
+            children: [
+              {
+                path: "",
+                name: "nirvati",
+                component: Nirvati,
                 meta: {
                   wallpaperClass: 'wallpaper-content-open wallpaper-zoom-in'
                 } 
